@@ -1,0 +1,44 @@
+package com.oc.paymybuddy.model;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class UserConnectionId implements Serializable {
+	
+	
+    private Integer userId;
+
+   private Integer userConnectionId;
+
+    // default constructor
+
+    public UserConnectionId(Integer userId, Integer UserConnectionId) {
+        this.userId = userId;
+        this.userConnectionId = UserConnectionId;
+    }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(userConnectionId, userId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserConnectionId other = (UserConnectionId) obj;
+		return Objects.equals(userConnectionId, other.userConnectionId) && Objects.equals(userId, other.userId);
+	}
+
+    
+
+	
+	
+}

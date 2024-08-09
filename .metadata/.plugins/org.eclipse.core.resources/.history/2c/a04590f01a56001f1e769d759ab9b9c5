@@ -1,0 +1,68 @@
+package com.oc.paymybuddy.model;
+
+import java.io.Serializable;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "user_connection")
+public class UserConnection implements Serializable {
+
+	@Id
+	@Column(name = "user_id", insertable=false, updatable=false)
+	private int userId;
+
+	@Id
+	@Column(name = "connection_user_id")
+	private int connectionUserId;
+	
+	@EmbeddedId
+	private UserConnection UserConnection;
+	
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+    
+	public UserConnectionId getUserConnectionId() {
+		return new UserConnectionId(userId, connectionUserId);
+	}
+    
+    public User getUser() { 
+    	return this.user;
+    }
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getConnectionUserId() {
+		return connectionUserId;
+	}
+
+	public void setConnectionUserId(int connectionUserId) {
+		this.connectionUserId = connectionUserId;
+	}
+
+	@Override
+	public String toString() {
+		return "UserConnection [userId=" + userId + ", connectionUserId=" + connectionUserId + "]";
+	}
+
+	
+	
+	
+}

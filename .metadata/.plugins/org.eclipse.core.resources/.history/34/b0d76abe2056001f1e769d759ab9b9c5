@@ -1,0 +1,14 @@
+package com.oc.paymybuddy.controller;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class TestController {
+
+    @GetMapping("/")
+    public String homePage() {
+        return "home";
+    }
+	
+}
