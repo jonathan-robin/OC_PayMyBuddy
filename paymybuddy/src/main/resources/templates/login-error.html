@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+      <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	
+    <title>Login error</title>
+  </head>
+  <body>
+  
+  	<div>
+  		<h5>Error with credentials</h5>
+  	</div>
+  	
+  	<div class="d-flex flex-row">
+	  	<div class="wrapper-button d-flex flex-column">
+		  	<button th:onclick="createAccount();" class="btn btn-success">Create a account</button>
+		  	<small>No account yet ?</small>
+	  	</div>
+	  	<div class="wrapper-button d-flex flex-column">
+		  	<button th:onclick="logIn();" class="btn btn-primary">Try to log again</button>
+		  	<small>Try again</small>
+	  	</div>
+  	</div>
+
+	<script src="/js/cssandjs/action.js"></script>
+  </body>
+</html>

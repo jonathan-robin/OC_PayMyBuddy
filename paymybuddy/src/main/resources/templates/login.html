@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link th:href="@{styles/cssandjs/main.css}" rel="stylesheet" type="text/css"/>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Pay My Buddy</title>
+    <base href="/">
+  </head>
+  <body>
+	<div class="form-wrapper">
+		<h1>Login Form</h1>
+	    <form action="#" th:action="@{/login}" th:object="${login}" method="post">
+	    	
+	    	<p>Email <input type="text" th:field="*{username}" /></p>
+	        <p>password <input type="text" th:field="*{password}" /></p>
+	        
+	        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+	    </form>
+	</div>
+	<script src="/js/cssandjs/action.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="navbar-fixed-top d-flex" th:fragment="header">
+		<button class="btn btn-primary btn-logo">PayMyBuddy</button>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav d-flex flex-row">
+            <li >
+              <a href="#" th:href="@{/}">Home</a>
+            </li>
+            <li >
+              <a href="#" th:href="@{/transfer}">Transfer</a>
+            </li>
+            <li >
+              <a href="/profile">
+                <span aria-hidden="true"></span>Profile
+              </a>
+            </li>
+            <li >
+              <a href="/signin">
+                <span aria-hidden="true"></span>Contact
+              </a>
+            </li>
+            <li >
+              <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+              </a>
+             <form style="visibility: hidden" id="form" method="post" action="#" ></form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

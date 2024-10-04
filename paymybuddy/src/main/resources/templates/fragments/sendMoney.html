@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+ <head>
+ <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+ </head>
+  <body>
+	
+	<div class="wrapper-comp-center">
+		<div class="d-flex flex-row wrapper-title">
+			<h3>Send Money</h3>
+			<button class="btn btn-primary">Add Connection</button>
+		</div>
+		<div class="wrapper-table">
+		
+		    <form action="#" th:action="@{/transaction}" th:object="${connection}" method="post">
+				<div class="d-flex flex-row send-table">
+		
+					<select class="form-control" id="dropDownList" th:field="*{userTo}">
+					    <option value="0">select option</option>
+					    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+					</select>
+		
+					<input type="text" th:field="*{description}"/>
+					<input type="number" th:field="*{amount}" />
+					<button class="btn btn-success" type="submit" value="Submit">Pay</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+
+  
+  </body>
+</html>

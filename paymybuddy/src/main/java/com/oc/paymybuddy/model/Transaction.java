@@ -31,6 +31,9 @@ public class Transaction {
 	@Column(name ="date")
 	private Date date;
 	
+	@Column(name="description")
+	private String description;
+	
 
 	public int getId() {
 		return id;
@@ -38,6 +41,14 @@ public class Transaction {
 
 	public int getUserFrom() {
 		return userFrom;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setUserFrom(int userFrom) {
@@ -71,7 +82,7 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return "Transaction [id=" + id + ", userFrom=" + userFrom + ", userTo=" + userTo + ", amount=" + amount
-				+ ", date=" + date + "]";
+				+ ", date=" + date + ", description=" + description + "]";
 	}
 
 }

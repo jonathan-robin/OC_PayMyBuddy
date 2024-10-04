@@ -1,5 +1,8 @@
 package com.oc.paymybuddy.service;
 
+import java.math.BigInteger;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +18,17 @@ public class TransactionService {
 	public Iterable<Transaction> getTransactions(){ 
 		return transactionRepo.findAll();
 	}
+	
+	public List<Transaction> findTransactionByUserId(Integer userId){ 
+	
+		return transactionRepo.findTransactionByUserFrom(userId);
+		
+	}
+	
+	public Transaction createTransaction(Transaction transaction) { 
+		return transactionRepo.save(transaction);
+	}
+	
+	
 	
 }

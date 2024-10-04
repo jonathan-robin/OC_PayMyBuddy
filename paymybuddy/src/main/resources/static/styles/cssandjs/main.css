@@ -1,0 +1,12 @@
+.form-wrapper{ 
+	display: flex; 
+	justify-content: center
+	border: 1px solid black; 
+	padding: 3em; 
+	margin: auto;
+}
+
+.navbar-collapse{ 
+    display: flex !important;
+    justify-content: end;
+}

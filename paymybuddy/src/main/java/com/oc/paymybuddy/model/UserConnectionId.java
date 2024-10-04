@@ -10,11 +10,9 @@ import jakarta.persistence.IdClass;
 public class UserConnectionId implements Serializable {
 
 	@Column(name = "user_id", insertable=false, updatable=false)
-	private Integer userId;
+	private int userId;
 
 	@Column(name = "connection_user_id", insertable=false, updatable=false)
-	private int connectionUserId;
-	
-
+	private int connectionUserId;	
 	
 }

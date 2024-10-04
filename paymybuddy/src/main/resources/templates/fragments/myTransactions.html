@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+ <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+ </head>
+  <body>
+	
+	<div class="wrapper-comp-center">
+		<div class="d-flex flex-row wrapper-title">
+			<h3>My Transactions</h3>
+		</div>
+		<div class="wrapper-table">
+				<table class="table-transactions">
+					<tr>
+						<th>Connections</th>
+						<th>Descriptions</th>
+						<th>Amout</th>
+					</tr>
+					<tr th:each="transaction: ${transactions}">
+					    <td th:text="${transaction.userTo}" />
+					    <td th:text="${transaction.date}" />
+					    <td th:text="${transaction.amount}" />
+					</tr>
+				</table>
+		</div>
+	</div>
+
+  
+  </body>
+</html>

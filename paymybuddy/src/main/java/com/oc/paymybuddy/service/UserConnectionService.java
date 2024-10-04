@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.model.UserConnection;
 import com.oc.paymybuddy.repository.UserConnectionRepository;
 
@@ -14,8 +15,8 @@ public class UserConnectionService {
 	@Autowired
 	UserConnectionRepository userConRepo;
 	
-	public Iterable<UserConnection> getUserConnection(){ 
-		return userConRepo.findAll();
+	public List<UserConnection> getUserConnection(User user){ 
+		return userConRepo.findUserConnectionByUserId(user.getId());
 	}
 	
 }

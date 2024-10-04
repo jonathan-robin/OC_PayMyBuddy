@@ -1,6 +1,11 @@
 package com.oc.paymybuddy.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +21,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
- 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -25,6 +30,12 @@ public class User {
 	@Column(name = "email")
 	private String email;
  
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + ", username="
+				+ username + "]";
+	}
+
 	@Column(name = "password")
 	private String password;
 	
@@ -37,21 +48,51 @@ public class User {
 	@Column(name = "balance")
 	private int balance;
 	
+	@Column(name="role")
+	private String role; 
+	
+	@Column(name="username")
+	private String username;
+	
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<UserConnection> userCon;
 
-	@Override
-	public String toString() {
-		return "User [email=" + email + "]";
-	}
 
 	public int getId() {
 		return id;
 	}
 	
+	 
+	public Collection<? extends GrantedAuthority> getRole() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+		return authorities;
+	}
+
+
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+
+
+
+		public String getUsername() {
+			return username;
+		}
+
+
+
+		public void setUsername(String username) {
+			this.username = username;
+		}
+
+	
 	public String getEmail() {
 		return email;
 	}
+	
+
 
 	public void setEmail(String email) {
 		this.email = email;

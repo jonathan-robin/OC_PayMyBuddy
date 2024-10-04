@@ -12,22 +12,16 @@ import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.model.UserConnection;
 import com.oc.paymybuddy.service.TransactionService;
 import com.oc.paymybuddy.service.UserConnectionService;
-import com.oc.paymybuddy.service.UserService;
 
 import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
 
 public class PaymybuddyApplication {
-
-	@Autowired
-	private UserService userService;
 	
 	@Autowired
 	private UserConnectionService userConService;
-	
-	@Autowired
-	private TransactionService transactionService;
+
 
 	Logger logger = LoggerFactory.getLogger(PaymybuddyApplication.class);
 	
@@ -38,17 +32,7 @@ public class PaymybuddyApplication {
 	
 	@PostConstruct
 	public void init() { 
-		try { 
 
-			Iterable <UserConnection> cons = userConService.getUserConnection();
-			
-			for (UserConnection con: cons) {
-				logger.info("{}", con.getUser());
-			}
-			
-		}catch( Exception e) { 
-			e.printStackTrace();
-		}
 	}
 	
 	

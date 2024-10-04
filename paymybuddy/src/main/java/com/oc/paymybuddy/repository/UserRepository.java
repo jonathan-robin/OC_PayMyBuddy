@@ -7,6 +7,8 @@ import com.oc.paymybuddy.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
+		
+	public User findByEmail(String email);
 	
 	
 }

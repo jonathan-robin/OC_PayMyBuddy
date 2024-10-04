@@ -18,12 +18,22 @@ import jakarta.persistence.Table;
 @Table(name = "user_connection")
 public class UserConnection {
 
+	@Override
+	public String toString() {
+		return "UserConnection [userConnectionId=" + userConnectionId + ", user=" + user + ", UserConnection="
+				+ UserConnection + "]";
+	}
+
 	@EmbeddedId
 	private UserConnectionId userConnectionId;
 	
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "connection_user_id", referencedColumnName = "id")
+    private User UserConnection;
     
     public UserConnection() { 
     	this.userConnectionId = new UserConnectionId();
@@ -33,4 +43,16 @@ public class UserConnection {
     	return this.user;
     }
 	
+	public User getUserConnection() {
+		return UserConnection;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public void setUserConnection(User userConnection) {
+		UserConnection = userConnection;
+	}
+
 }
