@@ -35,12 +35,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 @RequestMapping("/transaction")
 public class TransactionController {
 
-	private static Logger logger = LoggerFactory.getLogger(TransactionController.class);
-	
 	@Autowired
 	private UserService userSvc;
 	

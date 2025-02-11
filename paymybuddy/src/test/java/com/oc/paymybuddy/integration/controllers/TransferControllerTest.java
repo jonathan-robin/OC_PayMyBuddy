@@ -1,6 +1,5 @@
 package com.oc.paymybuddy.integration.controllers;
 
-import com.oc.paymybuddy.controller.TransferController;
 import com.oc.paymybuddy.model.Transaction;
 import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.model.UserConnection;
@@ -36,9 +35,7 @@ public class TransferControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
-    @InjectMocks
-    private TransferController transferController;
+
 
     @Mock
     private UserConnectionService userConSvc;

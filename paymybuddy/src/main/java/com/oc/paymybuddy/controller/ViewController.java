@@ -60,7 +60,7 @@ public class ViewController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("login") User login) {
+    public String logged(@ModelAttribute("login") User login) {
         return "home";
     }
     
@@ -108,7 +108,7 @@ public class ViewController {
 	 ************************************
 	 */
 	@GetMapping("/transfer")
-    public String transfer(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
+    public String showTransactions(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
 		
 		User user = userService.findUser(userDetails);
 		
@@ -126,7 +126,7 @@ public class ViewController {
 	
 
 	@GetMapping("/transfer/connections")
-    public String AddConnection(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
+    public String showConnections(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
 
 		model.addAttribute("connections", userConService.getUserConnection(userService.findUser(userDetails)));
 		return "connections";

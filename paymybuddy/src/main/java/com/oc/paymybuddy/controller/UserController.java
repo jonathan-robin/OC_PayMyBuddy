@@ -36,7 +36,7 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("")
-	public String createUser(@ModelAttribute("signIn") User user, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
+	public String addUser(@ModelAttribute("signIn") User user, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception { 
 		
 		log.info("user: {}", user.toString());
 		

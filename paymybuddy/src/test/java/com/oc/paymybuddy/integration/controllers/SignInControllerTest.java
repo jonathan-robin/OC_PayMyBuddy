@@ -87,7 +87,7 @@ class SignInControllerTest {
         when(userService.createUser(any(User.class))).thenReturn(null);
 
         Exception exception = assertThrows(Exception.class, () -> 
-            userController.createUser(user, (Model)mock(ModelAndView.class).getModel().get(0), mock(HttpServletRequest.class), mock(HttpServletResponse.class))
+            userController.addUser(user, (Model)mock(ModelAndView.class).getModel().get(0), mock(HttpServletRequest.class), mock(HttpServletResponse.class))
         );
 
         assertEquals("Error when creating new user", exception.getMessage());

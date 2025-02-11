@@ -42,8 +42,6 @@ public class UserService {
 	}
 	
 	public User createUser(User user) throws Exception { 
-		
-		logger.info("createUser: {}", user.toString());
 		Optional<User> _user = userRepo.findByEmail(user.getEmail()); 
 		if (_user.isPresent())
 			throw new Exception("Email already used!"); 
@@ -58,14 +56,9 @@ public class UserService {
 			newUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			newUser.setUsername(user.getUsername());
 			newUser.setBalance(0D);
-			
-			newUser.setRole("admin");
-			
-			logger.info("newUser: {}", newUser);
+			newUser.setRole("user");
 			userRepo.save(newUser);
-			
 			customUserSvc.loadUserByUsername(newUser.getEmail());
-			
 			return newUser;
 			
 		}
