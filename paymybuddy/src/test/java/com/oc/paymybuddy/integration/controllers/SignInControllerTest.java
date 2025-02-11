@@ -13,12 +13,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.context.SecurityContextRepository;
 
 import com.oc.paymybuddy.controller.UserController;
@@ -45,12 +41,13 @@ class SignInControllerTest {
     @Mock
     private SecurityContextRepository securityContextRepository;
 
+    Model model;
 
 
-//    @BeforeEach
-//    void setup() {
-//        mockMvc = MockMvcBuilders.standaloneSetup(signInController).build();
-//    }
+    @BeforeEach
+    void setup() {
+        model = mock(Model.class);
+    }
 
     @Test
     void testSignInPage() throws Exception {
@@ -78,16 +75,17 @@ class SignInControllerTest {
 
     @Test
     void testCreateUser_Exception() throws Exception {
-        User user = new User();
+        User user = userService.findAll().get(0);
+        
         user.setFirstname("John");
         user.setLastname("Doe");
-        user.setEmail("john.doe@example.com");
+        user.setEmail(user.getEmail());
         user.setPassword("password123");
 
-        when(userService.createUser(any(User.class))).thenReturn(null);
+//        when(userService.createUser(any(User.class))).thenReturn(null);
 
         Exception exception = assertThrows(Exception.class, () -> 
-            userController.addUser(user, (Model)mock(ModelAndView.class).getModel().get(0), mock(HttpServletRequest.class), mock(HttpServletResponse.class))
+            userController.addUser(user, model, mock(HttpServletRequest.class), mock(HttpServletResponse.class))
         );
 
         assertEquals("Error when creating new user", exception.getMessage());
