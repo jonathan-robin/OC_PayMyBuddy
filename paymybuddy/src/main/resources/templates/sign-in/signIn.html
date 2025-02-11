@@ -17,7 +17,7 @@
             <button class="btn btn-success fw-bold" style="width: 100%; font-size: 18px;">PayMyBuddy</button>
         </div>
 
-        <form action="#" th:action="@{/sign-in}" th:object="${signIn}" method="post">
+        <form th:action="@{/user}" th:object="${signIn}" method="post">
             <!-- Champ Email -->
             <div class="form-group mb-3">
                 <label for="email" class="form-label">Email</label>

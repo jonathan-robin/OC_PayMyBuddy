@@ -16,11 +16,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.context.SecurityContextRepository;
 
-import com.oc.paymybuddy.controller.SignInController;
+import com.oc.paymybuddy.controller.UserController;
 import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.service.CustomUserDetailsService;
 import com.oc.paymybuddy.service.UserService;
@@ -34,6 +35,9 @@ class SignInControllerTest {
 
     @Mock
     private UserService userService;
+    
+    @Mock 
+    private UserController userController;
 
     @Mock
     private CustomUserDetailsService customUserDetailsService;
@@ -41,13 +45,12 @@ class SignInControllerTest {
     @Mock
     private SecurityContextRepository securityContextRepository;
 
-    @InjectMocks
-    private SignInController signInController;
 
-    @BeforeEach
-    void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(signInController).build();
-    }
+
+//    @BeforeEach
+//    void setup() {
+//        mockMvc = MockMvcBuilders.standaloneSetup(signInController).build();
+//    }
 
     @Test
     void testSignInPage() throws Exception {
@@ -84,7 +87,7 @@ class SignInControllerTest {
         when(userService.createUser(any(User.class))).thenReturn(null);
 
         Exception exception = assertThrows(Exception.class, () -> 
-            signInController.createUser(user, mock(HttpServletRequest.class), mock(HttpServletResponse.class))
+            userController.createUser(user, (Model)mock(ModelAndView.class).getModel().get(0), mock(HttpServletRequest.class), mock(HttpServletResponse.class))
         );
 
         assertEquals("Error when creating new user", exception.getMessage());

@@ -84,6 +84,5 @@ public class TransactionController {
 			return transferController.transfer(model, userDetails);
 		}
 	}
-
 	
 }

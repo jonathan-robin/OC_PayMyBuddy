@@ -1,5 +1,6 @@
 package com.oc.paymybuddy.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import com.oc.paymybuddy.PaymybuddyApplication;
 import com.oc.paymybuddy.configuration.AuthConfig;
 import com.oc.paymybuddy.model.User;
+import com.oc.paymybuddy.model.UserConnection;
 import com.oc.paymybuddy.repository.UserRepository;
 
 @Service
@@ -27,6 +29,9 @@ public class UserService {
 	
 	@Autowired
 	private CustomUserDetailsService customUserSvc;
+	
+	@Autowired
+	private UserConnectionService userConSvc;
 
 	
 	Logger logger = LoggerFactory.getLogger(PaymybuddyApplication.class);
@@ -102,6 +107,17 @@ public class UserService {
     	
     	throw new Exception("User can't be found with email: " + email);
 	
+	}
+	
+	public List<User> GetAllUserTo(User user) throws Exception{ 
+		List<UserConnection> userCons = userConSvc.getUserConnection(user);
+		return userCons.stream().map(userCon -> {
+			try {
+				return findUserById(userCon.getUserConnection().getId()).get();
+			} catch (Exception e) {
+				return null;
+			}
+		}).toList();
 	}
 	
 	

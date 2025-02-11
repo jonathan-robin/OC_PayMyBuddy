@@ -28,13 +28,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/user-connection")
 public class UserConnectionController {
 
-private static Logger logger = LoggerFactory.getLogger(TransactionController.class);
+	private static Logger logger = LoggerFactory.getLogger(TransactionController.class);
 	
 	@Autowired
 	private UserService userSvc;
-	
-	@Autowired
-	private TransactionService transactionSvc;
 	
 	@Autowired
 	private TransferController transferController;
@@ -57,8 +54,6 @@ private static Logger logger = LoggerFactory.getLogger(TransactionController.cla
 		try {
 			userFrom = userSvc.findUser(userDetails);
 			User userTo = userSvc.findByEmail(email);
-			logger.info("userFrom: {}", userFrom);
-			logger.info("userTo: {}", userTo);
 			
 			if (userConSvc.checkIfUserConnectionTryToAddHimself(userFrom, userTo))
 				throw new Exception("You are trying to add yourself, that's not allowed.");

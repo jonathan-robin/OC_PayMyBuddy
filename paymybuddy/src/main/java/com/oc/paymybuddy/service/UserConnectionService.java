@@ -32,7 +32,6 @@ public class UserConnectionService {
 		userConRepo.save(userCon); 
 		
 		return userCon;
-		
 	}
 	
 	public boolean checkIfUserConnectionTryToAddHimself(User userFrom, User userTo) {

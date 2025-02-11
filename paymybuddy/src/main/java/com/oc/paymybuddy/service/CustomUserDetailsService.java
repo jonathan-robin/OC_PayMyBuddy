@@ -22,8 +22,6 @@ import com.oc.paymybuddy.repository.UserRepository;
 public class CustomUserDetailsService implements UserDetailsService {
 
 		Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
-		
-		private SecurityContextRepository securityContextRepository  = new HttpSessionSecurityContextRepository(); 
 	
 		@Autowired
 		private UserRepository userRepo;

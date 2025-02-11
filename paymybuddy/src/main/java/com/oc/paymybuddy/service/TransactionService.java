@@ -1,5 +1,6 @@
 package com.oc.paymybuddy.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oc.paymybuddy.dto.TransactionDto;
 import com.oc.paymybuddy.model.Transaction;
 import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.repository.TransactionRepository;
@@ -63,6 +65,33 @@ public class TransactionService {
 				
 		return transactionRepo.save(transaction);
 	}
+	
+	public TransactionDto toDto(Transaction transaction) throws Exception { 
+		
+    	TransactionDto dto = new TransactionDto(); 
+    	dto.setId(transaction.getId());
+    	dto.setAmount(transaction.getAmount());
+    	dto.setDescription(transaction.getDescription());
+    	dto.setUserFrom(userService.findUserById(transaction.getUserFrom()).get()); 
+    	dto.setUserTo(userService.findUserById(transaction.getUserTo()).get()); 
+    	dto.setDescription(transaction.getDescription());
+    	dto.setDate(transaction.getDate().toString());
+    	return dto;
+    	
+
+    }
+	
+	public List<TransactionDto> toDto(List<Transaction> transactions) throws Exception {
+		
+		List<TransactionDto> dtos = new ArrayList<TransactionDto>();
+
+	    for (Transaction transaction: transactions)
+	    	dtos.add(toDto(transaction));
+	    
+	    return dtos;
+		
+	}
+	
 	
 	
 	

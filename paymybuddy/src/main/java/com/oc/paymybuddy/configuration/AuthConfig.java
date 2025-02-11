@@ -29,7 +29,7 @@ public class AuthConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-        		.requestMatchers("/resources/**", "/static/**", "/main.css", "/css/**", "/js/**", "/img/**", "/icon/**", "/styles/**", "/login/error/", "/sign-in");
+        		.requestMatchers("/resources/**", "/static/**", "/main.css", "/css/**", "/js/**", "/img/**", "/icon/**", "/styles/**", "/login/error/", "/sign-in", "/user", "/sign-in/signed");
     }
 	
 	@Bean
