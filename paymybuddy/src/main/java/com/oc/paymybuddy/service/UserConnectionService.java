@@ -36,8 +36,6 @@ public class UserConnectionService {
 	}
 	
 	public Boolean checkIfUserConnectionTryToAddHimself(User userFrom, User userTo) {
-		log.info("{}",userFrom.getId());
-		log.info("{}",userFrom.getId());
 		return userFrom.getId() == userTo.getId();
 	}
 	
