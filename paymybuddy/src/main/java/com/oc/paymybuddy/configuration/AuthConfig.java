@@ -47,7 +47,9 @@ public class AuthConfig {
 				.permitAll()
 //				.loginProcessingUrl("/")
 				.defaultSuccessUrl("/", true)
-				.failureUrl("/login/error/");
+				.failureUrl("/login/error/")
+				.and()
+		        .csrf().disable();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

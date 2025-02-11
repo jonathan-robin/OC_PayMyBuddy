@@ -1,0 +1,5 @@
+package com.openclassrooms.tourguide.controller;
+
+public class RewardController {
+
+}

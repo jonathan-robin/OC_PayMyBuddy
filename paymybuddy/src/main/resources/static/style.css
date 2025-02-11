@@ -5,3 +5,16 @@
 	padding: 3em; 
 	margin: auto;
 }
+
+.error-toast {
+	background-color:red;
+	color: white;
+    padding: 1.5em;
+    width: fit-content;
+    float: right;
+    position: absolute;
+    top: 4.5em;
+    right: 2em;
+    border-radius: 0.5em;
+	
+}

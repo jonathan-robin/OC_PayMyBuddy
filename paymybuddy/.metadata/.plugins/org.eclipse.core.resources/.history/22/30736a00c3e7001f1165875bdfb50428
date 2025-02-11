@@ -1,0 +1,31 @@
+package com.openclassrooms.tourguide.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.openclassrooms.tourguide.user.User;
+
+/**
+ * Service class responsible for managing user-related operations.
+ * 
+ * <p>This service interacts with the {@link TourGuideService} to retrieve user details and other user-related data.</p>
+ */
+@Service
+public class UserService {
+    
+    @Autowired
+    private TourGuideService tourGuideService;
+
+    /**
+     * Retrieves a user by their username.
+     * 
+     * <p>This method calls the {@link TourGuideService#getUser(String)} method to retrieve a user from the system
+     * using their unique username.</p>
+     *
+     * @param userName The username of the user to retrieve.
+     * @return The user with the specified username, or {@code null} if the user is not found.
+     */
+    public User getUser(String userName) {
+        return tourGuideService.getUser(userName);
+    }
+}

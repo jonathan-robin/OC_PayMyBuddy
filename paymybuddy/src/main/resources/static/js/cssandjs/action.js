@@ -13,3 +13,11 @@ function createAccount(){
 function logIn(){ 
 	window.location.replace("http://localhost:8080/login");
 }
+
+function navAddConnection(){ 
+	window.location.replace("http://localhost:8080/transfer/connections");
+}
+
+function navToTransactions(){ 
+		window.location.replace("http://localhost:8080/transfer");
+}

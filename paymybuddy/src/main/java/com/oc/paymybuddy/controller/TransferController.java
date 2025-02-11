@@ -2,6 +2,7 @@ package com.oc.paymybuddy.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.oc.paymybuddy.dto.TransactionDto;
 import com.oc.paymybuddy.model.Transaction;
 import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.model.UserConnection;
@@ -35,6 +37,9 @@ public class TransferController {
 	private UserService userService;
 	
 	@Autowired
+	private UserConnectionRepository userConRepo;
+	
+	@Autowired
 	private TransactionService transactionService;
 
     public String getUser(@AuthenticationPrincipal UserDetails userDetails) {
@@ -45,31 +50,48 @@ public class TransferController {
     public String transfer(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
 		
 		logger.info("User Details: {} ", userDetails.getUsername());
-		
+		logger.info("userDdetails: {}", userDetails);
+
 		User user = userService.findUser(userDetails);
 		List<UserConnection> userCons = userConSvc.getUserConnection(user);
 		
 	    List<User> users = new ArrayList<User>();
 	    
 	    for (UserConnection userCon: userCons) {
-	    	User _user = userService.findUserById(userCon.getUserConnection().getId());
-	    	users.add(_user);
-	    	logger.info("userCon: {} ",userCon);
-	    	logger.info("_user: {} ",_user);
+	    	Optional<User> _user = userService.findUserById(userCon.getUserConnection().getId());
+	    	users.add(_user.get());
 	    }
 	    
 	    List<Transaction> transactions = transactionService.findTransactionByUserId(user.getId());
-	    
-	    for (Transaction trans: transactions) { 
-	    	logger.info("transactions: {} ", trans);
+	    List<TransactionDto> transactionsDto = new ArrayList<>(); 
+	    /** parse transaction to DTO */
+	    for (Transaction transaction: transactions) { 
+	    	TransactionDto dto = new TransactionDto(); 
+	    	dto.setId(transaction.getId());
+	    	dto.setAmount(transaction.getAmount());
+	    	dto.setDescription(transaction.getDescription());
+	    	dto.setUserFrom(userService.findUserById(transaction.getUserTo()).get()); 
+	    	dto.setUserTo(userService.findUserById(transaction.getUserFrom()).get()); 
+	    	dto.setDescription(transaction.getDescription());
+	    	dto.setDate(transaction.getDate().toString());
 	    }
-	    
 
 	    model.addAttribute("users", users);
     	model.addAttribute("transfer", model);
-    	model.addAttribute("transactions", transactions);
+    	model.addAttribute("transactions", transactionsDto);
     	model.addAttribute("connection", new Transaction());
     	return "transfer";
     }
 	
+	@GetMapping("/connections")
+    public String AddConnection(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
+		
+		User user = userService.findUser(userDetails);
+		List<UserConnection> userConnections = userConRepo.findUserConnectionByUserId(user.getId());
+		model.addAttribute("connections", userConnections);
+		
+		return "connections";
+
+    }
+
 }

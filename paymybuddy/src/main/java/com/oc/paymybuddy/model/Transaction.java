@@ -3,11 +3,14 @@ package com.oc.paymybuddy.model;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,12 +24,9 @@ public class Transaction {
  
 	@Column(name = "user_from")
 	private int userFrom;
-	
-	@Column(name = "user_to")
-	private int userTo;
-	
+
 	@Column(name = "amount")
-	private BigDecimal amount;
+	private Double amount;
 	
 	@Column(name ="date")
 	private Date date;
@@ -34,6 +34,8 @@ public class Transaction {
 	@Column(name="description")
 	private String description;
 	
+    @Column(name="user_to")
+    private int userTo;
 
 	public int getId() {
 		return id;
@@ -63,11 +65,11 @@ public class Transaction {
 		this.userTo = userTo;
 	}
 
-	public BigDecimal getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -81,8 +83,8 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", userFrom=" + userFrom + ", userTo=" + userTo + ", amount=" + amount
-				+ ", date=" + date + ", description=" + description + "]";
+		return "Transaction [id=" + id + ", userFrom=" + userFrom +  ", amount=" + amount
+				+ ", date=" + date + ", description=" + description + ", _userTo=" + userTo +"]";
 	}
 
 }

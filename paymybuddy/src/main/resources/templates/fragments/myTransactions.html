@@ -17,7 +17,7 @@
 						<th>Amout</th>
 					</tr>
 					<tr th:each="transaction: ${transactions}">
-					    <td th:text="${transaction.userTo}" />
+					    <td th:text="${transaction.userTo.username}" />
 					    <td th:text="${transaction.date}" />
 					    <td th:text="${transaction.amount}" />
 					</tr>

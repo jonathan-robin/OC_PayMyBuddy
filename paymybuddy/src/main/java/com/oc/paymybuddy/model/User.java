@@ -35,7 +35,14 @@ public class User {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + ", username="
 				+ username + "]";
 	}
+	
+	public User(String email, String username) { 
+		this.email = email; 
+		this.username = username; 
+	}
 
+	public User() { }
+	
 	@Column(name = "password")
 	private String password;
 	
@@ -46,7 +53,7 @@ public class User {
 	private String lastname;
  
 	@Column(name = "balance")
-	private int balance;
+	private Double balance;
 	
 	@Column(name="role")
 	private String role; 
@@ -56,10 +63,17 @@ public class User {
 	
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<UserConnection> userCon;
+    
+    @OneToMany(mappedBy = "userTo")
+    private List<Transaction> transactions;
 
 
 	public int getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) { 
+		this.id = id;
 	}
 	
 	 
@@ -122,11 +136,11 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public int getBalance() {
+	public Double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(Double balance) {
 		this.balance = balance;
 	}	
 	

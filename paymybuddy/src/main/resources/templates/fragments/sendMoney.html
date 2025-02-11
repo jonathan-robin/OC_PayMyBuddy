@@ -8,7 +8,7 @@
 	<div class="wrapper-comp-center">
 		<div class="d-flex flex-row wrapper-title">
 			<h3>Send Money</h3>
-			<button class="btn btn-primary">Add Connection</button>
+			<button class="btn btn-primary" th:onclick="navAddConnection()">Add Connection</button>
 		</div>
 		<div class="wrapper-table">
 		
@@ -21,7 +21,7 @@
 					</select>
 		
 					<input type="text" th:field="*{description}"/>
-					<input type="number" th:field="*{amount}" />
+					<input type="number" step=".01" th:field="*{amount}" />
 					<button class="btn btn-success" type="submit" value="Submit">Pay</button>
 				</div>
 			</form>

@@ -16,7 +16,6 @@ import com.oc.paymybuddy.service.UserConnectionService;
 import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
-
 public class PaymybuddyApplication {
 	
 	@Autowired

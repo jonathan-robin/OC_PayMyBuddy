@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+      <link href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	 <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+		<link th:href="@{/main.css}" rel="stylesheet" />
+	
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+	<div class="wrapper-comp-center">
+	
+		<div class="d-flex flex-row wrapper-title">
+			<h3>Add a connection</h3>
+		</div>
+		<div class="wrapper-table">
+		
+		    <form action="#" th:action="@{/user-connection}" method="post">
+				<div class="d-flex flex-row send-table">
+					<input type="text" name="email"/>
+					<button class="btn btn-success" type="submit" value="Submit">Add connection</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+		<div class="wrapper-comp-center">
+		<div class="d-flex flex-row wrapper-title">
+			<h3>My Transactions</h3>
+		</div>
+		<div class="wrapper-table">
+				<table class="table-transactions">
+					<tr>
+						<th>Name</th>
+						<th>email</th>
+					</tr>
+					<tr th:each="connection: ${connections}">
+					    <td th:text="${connection.UserConnection.username}" />
+					    <td th:text="${connection.UserConnection.email}" />
+					</tr>
+				</table>
+		</div>
+	</div>
+	
+	
+
+		
+	
+  
+  </body>
+</html>

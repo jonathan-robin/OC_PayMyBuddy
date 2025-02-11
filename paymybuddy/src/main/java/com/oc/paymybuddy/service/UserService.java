@@ -1,5 +1,6 @@
 package com.oc.paymybuddy.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -31,15 +32,15 @@ public class UserService {
 	Logger logger = LoggerFactory.getLogger(PaymybuddyApplication.class);
 
 	
-	public User getUserByEmail(String email) { 
+	public Optional<User> getUserByEmail(String email) { 
 		return userRepo.findByEmail(email);
 	}
 	
 	public User createUser(User user) throws Exception { 
 		
 		logger.info("createUser: {}", user.toString());
-		User _user = userRepo.findByEmail(user.getEmail()); 
-		if (_user != null)
+		Optional<User> _user = userRepo.findByEmail(user.getEmail()); 
+		if (_user.isPresent())
 			throw new Exception("Email already used!"); 
 		
 		else { 
@@ -51,13 +52,14 @@ public class UserService {
 			newUser.setLastname(user.getLastname()); 
 			newUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			newUser.setUsername(user.getUsername());
+			newUser.setBalance(0D);
 			
 			newUser.setRole("admin");
 			
 			logger.info("newUser: {}", newUser);
 			userRepo.save(newUser);
 			
-			customUserSvc.loadUserByUsername(newUser.getUsername());
+			customUserSvc.loadUserByUsername(newUser.getEmail());
 			
 			return newUser;
 			
@@ -66,23 +68,40 @@ public class UserService {
 	
 	public User findUser(UserDetails userDetails) throws Exception { 
 		
-		User user = userRepo.findByEmail(userDetails.getUsername());
-
-		if (user != null)
-			return user;
-		
-		throw new Exception("user can't be found");
-		
-	}
-	
-	public User findUserById(Integer id)  throws Exception { 
-		
-		Optional<User> user = userRepo.findById(id);
+		Optional<User> user = userRepo.findByEmail(userDetails.getUsername());
 
 		if (user.isPresent())
 			return user.get();
 		
-		throw new Exception("user can't be found");
+		throw new Exception("User can't be found");
+		
+	}
+	
+	public Optional<User> findUserById(Integer id)  throws Exception { 
+		
+		Optional<User> user = userRepo.findById(id);
+
+		if (user.isPresent())
+			return user;
+		
+		throw new Exception("User can't be found");
+	}
+	
+	public List<User> findAll(){ 
+		
+		return userRepo.findAll();
+		
+	}
+	
+	public User findByEmail(String email) throws Exception{ 
+		
+		Optional<User> user = userRepo.findByEmail(email);
+		
+		if (user.isPresent()) 
+    		return user.get();
+    	
+    	throw new Exception("User can't be found");
+	
 	}
 	
 	
