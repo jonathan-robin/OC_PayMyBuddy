@@ -1,6 +1,5 @@
 package com.oc.paymybuddy.repository;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
