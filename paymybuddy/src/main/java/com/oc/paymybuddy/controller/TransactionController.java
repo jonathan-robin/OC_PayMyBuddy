@@ -58,23 +58,24 @@ public class TransactionController {
 	@PostMapping("")
 	public String addTransaction(Model model, @ModelAttribute("connection") Transaction transaction, @AuthenticationPrincipal UserDetails userDetails) throws Exception {
 		
-		log.info("Call to POST /transaction with transaction, {}", transaction.toString());
-		
 		User user = userSvc.findUser(userDetails);
 		
 		transaction.setUserFrom(user.getId());
 		transaction.setDate(new Date(System.currentTimeMillis()));
-		
-		logger.info("transaction: {}", transaction.toString());
 		
 		if (transaction.getAmount() <= 0) {
 			model.addAttribute("error", "Amount can't be lower than 0.");
 			return viewController.transfer(model, userDetails);
 		}
 		
-		logger.info("model: {}", model.toString());
-
-		
+		/* even though it's not possible to have a connection with ourself 
+		 * Double check to not be able to send money to ourself
+		 * */
+		if (transaction.getUserFrom() == transaction.getUserTo()) {
+			model.addAttribute("error", "You're not supposed to have a connection with yourself.");
+			return viewController.transfer(model, userDetails);
+		}
+	
 		try {
 			transactionSvc.createTransaction(transaction);	
 			return viewController.transfer(model, userDetails);

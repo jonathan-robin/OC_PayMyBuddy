@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.oc.paymybuddy.dto.TransactionDto;
 import com.oc.paymybuddy.model.Transaction;
 import com.oc.paymybuddy.model.User;
-import com.oc.paymybuddy.model.UserConnection;
 import com.oc.paymybuddy.service.TransactionService;
 import com.oc.paymybuddy.service.UserConnectionService;
 import com.oc.paymybuddy.service.UserService;
