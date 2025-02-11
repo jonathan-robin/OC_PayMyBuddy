@@ -48,7 +48,7 @@ public class TransactionController {
 	private TransactionService transactionSvc;
 	
 	@Autowired
-	private TransferController transferController;
+	private ViewController viewController;
 	
 	
     public String getUser(@AuthenticationPrincipal UserDetails userDetails) {
@@ -69,7 +69,7 @@ public class TransactionController {
 		
 		if (transaction.getAmount() <= 0) {
 			model.addAttribute("error", "Amount can't be lower than 0.");
-			return transferController.transfer(model, userDetails);
+			return viewController.transfer(model, userDetails);
 		}
 		
 		logger.info("model: {}", model.toString());
@@ -77,11 +77,11 @@ public class TransactionController {
 		
 		try {
 			transactionSvc.createTransaction(transaction);	
-			return transferController.transfer(model, userDetails);
+			return viewController.transfer(model, userDetails);
 		}
 		catch (Exception e) { 
 			model.addAttribute("error", e.getMessage());
-			return transferController.transfer(model, userDetails);
+			return viewController.transfer(model, userDetails);
 		}
 	}
 	

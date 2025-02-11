@@ -41,6 +41,7 @@ public class UserConnectionService {
 	public boolean checkIfUserConnectionIsAlreadyExisting(User userFrom, User userTo) {
 		return userConRepo.findUserConnectionByUserFromIdAndUserToId(userFrom.getId(), userTo.getId()).isPresent();
 	}
+
 	
 	
 }

@@ -109,7 +109,7 @@ public class UserService {
 	
 	}
 	
-	public List<User> GetAllUserTo(User user) throws Exception{ 
+	public List<User> getAllConnectedUser(User user) throws Exception{ 
 		List<UserConnection> userCons = userConSvc.getUserConnection(user);
 		return userCons.stream().map(userCon -> {
 			try {
@@ -119,6 +119,8 @@ public class UserService {
 			}
 		}).toList();
 	}
+	
+
 	
 	
 	

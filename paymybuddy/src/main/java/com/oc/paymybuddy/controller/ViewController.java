@@ -1,5 +1,7 @@
 package com.oc.paymybuddy.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,7 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.oc.paymybuddy.dto.TransactionDto;
+import com.oc.paymybuddy.model.Transaction;
 import com.oc.paymybuddy.model.User;
+import com.oc.paymybuddy.model.UserConnection;
+import com.oc.paymybuddy.service.TransactionService;
+import com.oc.paymybuddy.service.UserConnectionService;
 import com.oc.paymybuddy.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +29,14 @@ public class ViewController {
 	@Value("${spring.application.name}")
     String appName;
 
+	@Autowired
+	private TransactionService transactionService; 
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserConnectionService userConService;
 	
 	@GetMapping("/")
     public String homePage(Model model) {
@@ -91,6 +103,37 @@ public class ViewController {
 	public String showSignedError() { 
 		return "sign-in/signIn-error";
 	}
+	
+	/************************************
+	 *        TRANSFER RELATED VIEW
+	 ************************************
+	 */
+	@GetMapping("/transfer")
+    public String transfer(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
+		
+		User user = userService.findUser(userDetails);
+		
+		/* all the connection for the user */
+	    List<User> users = userService.getAllConnectedUser(user);
+	    List<Transaction> transactions = transactionService.findTransactionByUserId(user.getId());
+	    List<TransactionDto> transactionsDto = transactionService.toDto(transactions);
+
+	    model.addAttribute("users", users);
+    	model.addAttribute("transfer", model);
+    	model.addAttribute("transactions", transactionsDto);
+    	model.addAttribute("connection", new Transaction());
+    	return "transfer";
+    }
+	
+
+	@GetMapping("/transfer/connections")
+    public String AddConnection(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
+
+		model.addAttribute("connections", userConService.getUserConnection(userService.findUser(userDetails)));
+		return "connections";
+
+    }
+
 	
 	
 }

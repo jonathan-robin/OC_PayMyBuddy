@@ -28,47 +28,22 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/transfer")
+//@RequestMapping("/transfer")
 public class TransferController {
-	
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private UserConnectionRepository userConRepo;
-	
-	@Autowired
-	private TransactionService transactionService;
-
-    public String getUser(@AuthenticationPrincipal UserDetails userDetails) {
-        return "User Details: " + userDetails.getUsername();
-    }
-	
-	@GetMapping("")
-    public String transfer(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
-		User user = userService.findUser(userDetails);
-		
-		/* all the connection for the user */
-	    List<User> users = userService.getAllConnectedUser(user);
-	    List<Transaction> transactions = transactionService.findTransactionByUserId(user.getId());
-	    List<TransactionDto> transactionsDto = transactionService.toDto(transactions);
-
-	    model.addAttribute("users", users);
-    	model.addAttribute("transfer", model);
-    	model.addAttribute("transactions", transactionsDto);
-    	model.addAttribute("connection", new Transaction());
-    	return "transfer";
-    }
-	
-	@GetMapping("/connections")
-    public String AddConnection(Model model, @AuthenticationPrincipal UserDetails userDetails) throws Exception { 
-		
-		User user = userService.findUser(userDetails);
-		List<UserConnection> userConnections = userConRepo.findUserConnectionByUserId(user.getId());
-		model.addAttribute("connections", userConnections);
-		
-		return "connections";
-
-    }
+//	
+//	@Autowired
+//	private UserService userService;
+//	
+//	@Autowired
+//	private UserConnectionRepository userConRepo;
+//	
+//	@Autowired
+//	private TransactionService transactionService;
+//
+//    public String getUser(@AuthenticationPrincipal UserDetails userDetails) {
+//        return "User Details: " + userDetails.getUsername();
+//    }
+//	
+//	
 
 }
