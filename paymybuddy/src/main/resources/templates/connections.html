@@ -11,9 +11,9 @@
 <body class="bg-light">
 
     <!-- Section pour afficher l'erreur -->
-    <div th:if="${error}" class="error-message">
-        <p class="error-toast" id="errorToast" th:text="${error}"></p>
-    </div>
+
+        <p th:if="${error}" class="error-toast" id="errorToast" th:text="${error}"></p>
+
 
     <div th:replace="fragments/header :: header"></div>
 
