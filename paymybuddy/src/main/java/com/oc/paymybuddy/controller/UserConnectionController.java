@@ -48,11 +48,11 @@ public class UserConnectionController {
 			if (userConSvc.checkIfUserConnectionTryToAddHimself(userFrom, userTo))
 				throw new Exception("You are trying to add yourself, that's not allowed.");
 			if (userConSvc.checkIfUserConnectionIsAlreadyExisting(userFrom, userTo))
-				throw new Exception("User with email :" + userTo.getEmail() + " is already in your connections list !");
+				throw new Exception("User with email :" + userTo.getEmail() + " is already in your connecti ons list !");
 			
 			userConSvc.addUserConnection(userFrom, userTo);
 			
-			return viewController.showTransactions(model, userDetails);
+			return viewController.showConnections(model, userDetails);
 			
 		} catch (Exception e) {
 			log.warn("No User found for email adress: {} ", email);
