@@ -1,6 +1,7 @@
 package com.oc.paymybuddy.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +40,7 @@ public class UserConnectionService {
 	}
 	
 	public boolean checkIfUserConnectionIsAlreadyExisting(User userFrom, User userTo) {
-		return false;
+		return userConRepo.findUserConnectionByUserFromIdAndUserToId(userFrom.getId(), userTo.getId()).isPresent();
 	}
 	
 	
