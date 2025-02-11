@@ -1,34 +1,34 @@
-<!doctype html>
-<html lang="en">
-  <head>
-
-      <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	
-    <title>Login error</title>
-  </head>
-  <body>
-  
-  	<div>
-  		<h5>Error with credentials</h5>
-  	</div>
-  	
-  	<div class="d-flex flex-row">
-	  	<div class="wrapper-button d-flex flex-column">
-		  	<button th:onclick="createAccount();" class="btn btn-success">Create a account</button>
-		  	<small>No account yet ?</small>
-	  	</div>
-	  	<div class="wrapper-button d-flex flex-column">
-		  	<button th:onclick="logIn();" class="btn btn-primary">Try to log again</button>
-		  	<small>Try again</small>
-	  	</div>
-  	</div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link th:href="@{/main.css}" rel="stylesheet" />
 
+    <title>Login Error</title>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="card shadow-lg p-4" style="width: 25vw; border-radius: 10px;">
+        <div class="text-center mb-4 w-75 mx-auto">
+            <h5 class="text-danger">Error with credentials</h5>
+        </div>
+
+        <div class="d-flex justify-content-center flex-row align-items-center">
+            <div class="wrapper-button mx-2 text-center">
+                <button th:onclick="createAccount();" class="btn btn-success btn-lg">Create an account</button>
+                <small class="text-muted">No account yet?</small>
+            </div>
+            <div class="wrapper-button mx-2 text-center">
+                <button th:onclick="logIn();" class="btn btn-primary btn-lg">Log again</button>
+                <small class="text-muted">Try again</small>
+            </div>
+        </div>
+    </div>
 	<script src="/js/cssandjs/action.js"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

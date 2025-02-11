@@ -1,34 +1,58 @@
-<!doctype html>
-<html lang="en">
- <head>
- <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
- </head>
-  <body>
-	
-	<div class="wrapper-comp-center">
-		<div class="d-flex flex-row wrapper-title">
-			<h3>Send Money</h3>
-			<button class="btn btn-primary" th:onclick="navAddConnection()">Add Connection</button>
-		</div>
-		<div class="wrapper-table">
-		
-		    <form action="#" th:action="@{/transaction}" th:object="${connection}" method="post">
-				<div class="d-flex flex-row send-table">
-		
-					<select class="form-control" id="dropDownList" th:field="*{userTo}">
-					    <option value="0">select option</option>
-					    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
-					</select>
-		
-					<input type="text" th:field="*{description}"/>
-					<input type="number" step=".01" th:field="*{amount}" />
-					<button class="btn btn-success" type="submit" value="Submit">Pay</button>
-				</div>
-			</form>
-			
-		</div>
-	</div>
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
-  </body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+    <!-- Fragment "sendMoneyForm" -->
+    <div th:fragment="sendMoneyForm">
+        <div class="card shadow-lg p-4" style="width: 40vw; border-radius: 10px; margin: auto;">
+            <div class="d-flex justify-content-between mb-4">
+                <h3 class="text-primary">Send Money</h3>
+                <button class="btn btn-primary" th:onclick="navAddConnection()">Add Connection</button>
+            </div>
+
+            <div class="wrapper-table">
+                <form action="#" th:action="@{/transaction}" th:object="${connection}" method="post">
+                    <div class=" d-flex flex-row">
+                        
+                        <!-- Dropdown for selecting the user -->
+                        <div class="form-group w-25">
+                            <label for="dropDownList" class="form-label">Select User</label>
+                            <select class="form-control" id="dropDownList" th:field="*{userTo}">
+                                <option value="0">Select option</option>
+                                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+                            </select>
+                        </div>
+
+                        <!-- Description input -->
+                        <div class="form-group w-50">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" th:field="*{description}" placeholder="Enter description" required />
+                        </div>
+
+                        <!-- Amount input -->
+                        <div class="form-group w-25">
+                            <label for="amount" class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="amount" th:field="*{amount}" step=".01" placeholder="Enter amount" required />
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button class="btn btn-success" style="height: 25px !important; margin: auto; margin-top: 20px !important; " type="submit">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and necessary Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>

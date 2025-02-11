@@ -13,11 +13,6 @@ p {
     font-family: sans-serif;
 }
 
-div.navbar-collapse.collapse{ 
-    display: flex !important;
-    justify-content: end;
-}
-
 .wrapper-comp-center{ 
 	margin-top: 10em;
     padding: 0em 50em;
@@ -62,7 +57,39 @@ div.navbar-collapse.collapse{
     border-radius: 0.5em;
 	
 }
-
-.wrapper-table{ 
-    padding: 1.5em 2em;
-}
+  body {
+    background-color: #f8f9fa;
+  }
+  .error-container {
+    margin-top: 100px;
+    text-align: center;
+  }
+  .error-message {
+    font-size: 1.5rem;
+    color: #dc3545;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .wrapper-button {
+    margin: 20px;
+  }
+  .wrapper-button small {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  
+  .logo-bg { 
+  background: linear-gradient(to right, #50a750, #91e154);
+    color: white !important;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    
+   }
+   
+  a.text-primary.logo-bg:hover{ 
+   	color:white !important;
+   }
+   
+   .logo-green { 
+  		background-color: #50a750; 
+   }

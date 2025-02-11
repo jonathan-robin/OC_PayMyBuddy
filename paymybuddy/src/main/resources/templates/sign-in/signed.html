@@ -1,12 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-<head> 
-    <title>Sign In</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+
+    <title>Success</title>
 </head>
-<body>
-	<h1>Successful Sign-in !</h1>
-	<script src="/js/cssandjs/action.js"></script>
-	<button class="btn btn-primary" onclick="redirectHome()">Go to home</button>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="card shadow-lg p-4" style="width: 30vw; border-radius: 10px;">
+        <div class="text-center mb-4">
+            <h3 class="text-success">Successful Signed-in!</h3>
+        </div>
+
+        <div class="d-flex justify-content-center mb-3">
+            <button class="btn btn-primary w-100" onclick="redirectHome()">Go to Home</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/cssandjs/action.js"></script>
 </body>
 </html>

@@ -1,38 +1,34 @@
 <!DOCTYPE html>
-<html>
-  <head>
-   <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="navbar-fixed-top d-flex" th:fragment="header">
-		<button class="btn btn-primary btn-logo">PayMyBuddy</button>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav d-flex flex-row">
-            <li >
-              <a href="#" th:href="@{/}">Home</a>
-            </li>
-            <li >
-              <a href="#" th:href="@{/transfer}">Transfer</a>
-            </li>
-            <li >
-              <a href="#" th:href="@{/profile}">
-                <span aria-hidden="true"></span>Profile
-              </a>
-            </li>
-            <li >
-              <a href="/signin">
-                <span aria-hidden="true"></span>Contact
-              </a>
-            </li>
-            <li >
-              <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
-              </a>
-             <form style="visibility: hidden" id="form" method="post" action="#" ></form>
-            </li>
-          </ul>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="/main.css" rel="stylesheet">
+
+    <title>Login Error</title>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="card shadow-lg p-4" style="width: 25vw; border-radius: 10px;">
+        <div class="text-center mb-4 w-75 mx-auto">
+            <h5 class="text-danger">Error with credentials</h5>
         </div>
-      </div>
+
+        <div class="d-flex justify-content-space-betweenflex-row align-items-center">
+            <div class="wrapper-button text-center mx-2">
+                <button onclick="createAccount();" class="btn btn-success btn-lg w-100">Create an account</button>
+                <small class="text-muted">No account yet?</small>
+            </div>
+            <div class="wrapper-button text-center mx-2">
+                <button onclick="logIn();" class="btn btn-primary btn-lg w-100">log again</button>
+                <small class="text-muted">Try again</small>
+            </div>
+        </div>
     </div>
-  </body>
-</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body></html>

@@ -1,30 +1,50 @@
-<!doctype html>
-<html lang="en">
-  <head>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-	<link th:href="@{styles/cssandjs/main.css}" rel="stylesheet" type="text/css"/>
-    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link th:href="@{/main.css}" type="text/css"  rel="stylesheet" />
 
-    <title>Pay My Buddy</title>
-    <base href="/">
-  </head>
-  <body>
-	<div class="form-wrapper">
-		<h1>Login Form</h1>
-	    <form action="#" th:action="@{/login}" th:object="${login}" method="post">
-	    	
-	    	<p>Email <input type="text" th:field="*{username}" /></p>
-	        <p>password <input type="text" th:field="*{password}" /></p>
-	        
-	        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-	    </form>
-	</div>
-	<script src="/js/cssandjs/action.js"></script>
-  </body>
+    <!-- FontAwesome pour les icônes -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <title>Pay My Buddy - Login</title>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="card shadow-lg p-4" style="width: 25vw;border-radius: 10px;">
+        <div class="text-center center mb-4 w-50 mx-auto">
+            <button class="btn logo-bg fw-bold" style="width: 100%; font-size: 18px;">Pay My Buddy</button>
+        </div>
+
+        <form action="#" th:action="@{/login}" th:object="${login}" method="post">
+            
+            <!-- Champ Email -->
+            <div class="form-group mb-3">
+                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" class="form-control" th:field="*{username}" placeholder="Email" required>
+            </div>
+
+            <!-- Champ Password -->
+            <div class="form-group mb-3">
+                <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" id="password" class="form-control" th:field="*{password}" placeholder="Password" required>
+            </div>
+
+            <!-- Checkbox Remember Me -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+
+            <!-- Bouton de Connexion -->
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
