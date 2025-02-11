@@ -9,6 +9,12 @@
     <link th:href="@{/main.css}" rel="stylesheet" />
 </head>
 <body class="bg-light">
+
+    <!-- Section pour afficher l'erreur -->
+    <div th:if="${error}" class="error-message">
+        <p class="error-toast" id="errorToast" th:text="${error}"></p>
+    </div>
+
     <div th:replace="fragments/header :: header"></div>
 
     <div class="container mt-5">
@@ -49,5 +55,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/cssandjs/action.js"></script>
+  	<script src="/action.js"></script>
 </body>
 </html>

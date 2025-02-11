@@ -21,7 +21,10 @@ import com.oc.paymybuddy.service.TransactionService;
 import com.oc.paymybuddy.service.UserConnectionService;
 import com.oc.paymybuddy.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @RequestMapping("/user-connection")
 public class UserConnectionController {
 
@@ -61,9 +64,9 @@ private static Logger logger = LoggerFactory.getLogger(TransactionController.cla
 			return transferController.AddConnection(model, userDetails);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new Exception();
+			log.warn("No User found for email adress: {} ", email);
+			model.addAttribute("error", e.getMessage());
+			return transferController.AddConnection(model, userDetails);
 		}
     	
     }

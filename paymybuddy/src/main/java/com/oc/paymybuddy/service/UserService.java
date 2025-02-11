@@ -100,7 +100,7 @@ public class UserService {
 		if (user.isPresent()) 
     		return user.get();
     	
-    	throw new Exception("User can't be found");
+    	throw new Exception("User can't be found with email: " + email);
 	
 	}
 	
