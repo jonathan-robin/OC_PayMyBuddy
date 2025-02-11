@@ -34,5 +34,13 @@ public class UserConnectionService {
 		
 	}
 	
+	public boolean checkIfUserConnectionTryToAddHimself(User userFrom, User userTo) {
+		return userFrom.getId() == userTo.getId();
+	}
+	
+	public boolean checkIfUserConnectionIsAlreadyExisting(User userFrom, User userTo) {
+		return false;
+	}
+	
 	
 }

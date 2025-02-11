@@ -59,6 +59,10 @@ private static Logger logger = LoggerFactory.getLogger(TransactionController.cla
 			User userTo = userSvc.findByEmail(email);
 			logger.info("userFrom: {}", userFrom);
 			logger.info("userTo: {}", userTo);
+			if (userConSvc.checkIfUserConnectionTryToAddHimself(userFrom, userTo))
+				throw new Exception("You are trying to add yourself, that's not allowed.");
+			
+			userConSvc.checkIfUserConnectionIsAlreadyExisting(userFrom, userTo);
 			userConSvc.addUserConnection(userFrom, userTo);
 			
 			return transferController.AddConnection(model, userDetails);
