@@ -32,8 +32,10 @@ import com.oc.paymybuddy.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 @RequestMapping("/transaction")
 public class TransactionController {
 
@@ -55,6 +57,8 @@ public class TransactionController {
 
 	@PostMapping("")
 	public String addTransaction(Model model, @ModelAttribute("connection") Transaction transaction, @AuthenticationPrincipal UserDetails userDetails) throws Exception {
+		
+		log.info("Call to POST /transaction with transaction, {}", transaction.toString());
 		
 		User user = userSvc.findUser(userDetails);
 		

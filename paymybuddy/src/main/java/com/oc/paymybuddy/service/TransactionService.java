@@ -12,6 +12,8 @@ import com.oc.paymybuddy.model.Transaction;
 import com.oc.paymybuddy.model.User;
 import com.oc.paymybuddy.repository.TransactionRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TransactionService {
 	
@@ -33,13 +35,14 @@ public class TransactionService {
 		
 	}
 	
+	@Transactional
 	public Transaction createTransaction(Transaction transaction) throws Exception { 
 		
 		Optional<User> optUserFrom = userService.findUserById(transaction.getUserFrom());
 		Optional<User> optUserTo = userService.findUserById(transaction.getUserTo());
 		
 		if (!optUserFrom.isPresent() || !optUserTo.isPresent()) {
-			throw new Exception("Users can't be found");
+			throw new Exception("User can't be found");
 		}
 		
 		User userFrom = optUserFrom.get();

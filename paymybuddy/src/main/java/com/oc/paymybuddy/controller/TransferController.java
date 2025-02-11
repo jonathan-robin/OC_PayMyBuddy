@@ -23,8 +23,11 @@ import com.oc.paymybuddy.service.TransactionService;
 import com.oc.paymybuddy.service.UserConnectionService;
 import com.oc.paymybuddy.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
+@Slf4j
 @RequestMapping("/transfer")
 public class TransferController {
 
@@ -70,11 +73,16 @@ public class TransferController {
 	    	dto.setId(transaction.getId());
 	    	dto.setAmount(transaction.getAmount());
 	    	dto.setDescription(transaction.getDescription());
-	    	dto.setUserFrom(userService.findUserById(transaction.getUserTo()).get()); 
-	    	dto.setUserTo(userService.findUserById(transaction.getUserFrom()).get()); 
+	    	dto.setUserFrom(userService.findUserById(transaction.getUserFrom()).get()); 
+	    	dto.setUserTo(userService.findUserById(transaction.getUserTo()).get()); 
 	    	dto.setDescription(transaction.getDescription());
 	    	dto.setDate(transaction.getDate().toString());
+	    	transactionsDto.add(dto);
 	    }
+	    
+	    log.info("users: {}", users);
+	    log.info("model: {}", model);
+	    log.info("transactionsDto: {}", transactionsDto);
 
 	    model.addAttribute("users", users);
     	model.addAttribute("transfer", model);

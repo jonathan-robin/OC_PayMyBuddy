@@ -45,16 +45,17 @@ p {
 }
 
 .error-toast {
-	background-color:red;
-	color: white;
-    padding: 1.5em;
-    width: fit-content;
-    float: right;
+	background-color: #ed3b3b;
+    color: white;
+    padding: 0.75em;
+    width: 15%;
     position: absolute;
-    top: 4.5em;
+    z-index: 1;
+    top: 8em;
     right: 2em;
     border-radius: 0.5em;
-	
+    font-size: 10pt;
+    transition: opacity 2s ease-in-out;
 }
   body {
     background-color: #f8f9fa;
