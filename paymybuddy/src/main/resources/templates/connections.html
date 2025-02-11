@@ -1,59 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-
-      <link href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Required meta tags -->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	 <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
-		<link th:href="@{/main.css}" rel="stylesheet" />
-	
-  </head>
-  <body>
+    <link th:href="@{/main.css}" rel="stylesheet" />
+</head>
+<body class="bg-light">
     <div th:replace="fragments/header :: header"></div>
-	<div class="wrapper-comp-center">
-	
-		<div class="d-flex flex-row wrapper-title">
-			<h3>Add a connection</h3>
-		</div>
-		<div class="wrapper-table">
-		
-		    <form action="#" th:action="@{/user-connection}" method="post">
-				<div class="d-flex flex-row send-table">
-					<input type="text" name="email"/>
-					<button class="btn btn-success" type="submit" value="Submit">Add connection</button>
-				</div>
-			</form>
-		</div>
-	</div>
-	
-		<div class="wrapper-comp-center">
-		<div class="d-flex flex-row wrapper-title">
-			<h3>My Transactions</h3>
-		</div>
-		<div class="wrapper-table">
-				<table class="table-transactions">
-					<tr>
-						<th>Name</th>
-						<th>email</th>
-					</tr>
-					<tr th:each="connection: ${connections}">
-					    <td th:text="${connection.UserConnection.username}" />
-					    <td th:text="${connection.UserConnection.email}" />
-					</tr>
-				</table>
-		</div>
-	</div>
-	
-	
 
-		
-	
-  
-  </body>
+    <div class="container mt-5">
+        <!-- Section: Add Connection -->
+        <div class="card shadow p-4 mb-4">
+            <h3 class="text-primary mb-3">Add a Connection</h3>
+            <form action="#" th:action="@{/user-connection}" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="email" placeholder="Enter email..." required>
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Section: My Transactions -->
+        <div class="card shadow p-4">
+            <h3 class="text-primary mb-3">My Connections</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="connection: ${connections}">
+                            <td th:text="${connection.UserConnection.username}"></td>
+                            <td th:text="${connection.UserConnection.email}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -19,6 +19,12 @@ public class TestController {
         return "home";
     }
     
+    @GetMapping("/contact")
+    public String contact(Model model) {
+    	model.addAttribute("appName", appName);
+        return "contact";
+    }
+    
 //    @GetMapping("/sign-in")
 //    public String signIn(Model model) { 
 //    	model.addAttribute("signIn", new User());

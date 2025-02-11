@@ -6,7 +6,6 @@ h2 {
 
 strong {
     font-weight: 700;
-    background-color: yellow;
 }
 
 p {
@@ -90,6 +89,7 @@ p {
    	color:white !important;
    }
    
-   .logo-green { 
-  		background-color: #50a750; 
+   .bg-green { 
+  		background-color: #50a750 !important; 
+  		color:white !important;
    }
