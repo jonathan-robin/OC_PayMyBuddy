@@ -62,7 +62,7 @@ public class TransactionController {
 		
 		if (transaction.getAmount() <= 0) {
 			model.addAttribute("error", "Amount can't be lower than 0.");
-			return viewController.transfer(model, userDetails);
+			return viewController.showTransactions(model, userDetails);
 		}
 		
 		/* even though it's not possible to have a connection with ourself 
@@ -70,16 +70,16 @@ public class TransactionController {
 		 * */
 		if (transaction.getUserFrom() == transaction.getUserTo()) {
 			model.addAttribute("error", "You're not supposed to have a connection with yourself.");
-			return viewController.transfer(model, userDetails);
+			return viewController.showTransactions(model, userDetails);
 		}
 	
 		try {
 			transactionSvc.createTransaction(transaction);	
-			return viewController.transfer(model, userDetails);
+			return viewController.showTransactions(model, userDetails);
 		}
 		catch (Exception e) { 
 			model.addAttribute("error", e.getMessage());
-			return viewController.transfer(model, userDetails);
+			return viewController.showTransactions(model, userDetails);
 		}
 	}
 	

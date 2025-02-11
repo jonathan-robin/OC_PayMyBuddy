@@ -52,13 +52,13 @@ public class UserConnectionController {
 			
 			userConSvc.addUserConnection(userFrom, userTo);
 			
-			return viewController.AddConnection(model, userDetails);
+			return viewController.showTransactions(model, userDetails);
 			
 		} catch (Exception e) {
 			log.warn("No User found for email adress: {} ", email);
 			log.info("exception: {}",e);
 			model.addAttribute("error", e.getMessage());
-			return viewController.AddConnection(model, userDetails);
+			return viewController.showConnections(model, userDetails);
 		}
     	
     }

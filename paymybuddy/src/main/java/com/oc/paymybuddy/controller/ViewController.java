@@ -43,7 +43,7 @@ public class ViewController {
         return "home";
     }
 
-    @GetMapping("/contact")
+    @GetMapping("/contact") 
     public String contact(Model model) {
     	model.addAttribute("appName", appName);
         return "contact";

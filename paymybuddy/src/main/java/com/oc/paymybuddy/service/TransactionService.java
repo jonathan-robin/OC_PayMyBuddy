@@ -52,9 +52,6 @@ public class TransactionService {
 		Double amount = transaction.getAmount();
 		Double balance = userFrom.getBalance();
 		
-		logger.info("balance {}, userFrom  {}, userTo: {}, amount: {}", balance, userFrom.getId(), userTo.getId(), amount);
-
-		
 		if (transaction.getAmount() > balance) {
 			logger.warn("User {} try to make a transaction of {} with unsufficient balance: {}", userFrom.getUsername(), transaction.getAmount(), balance);
 		    throw new Exception("Not enough money to make the transaction!" + System.lineSeparator() + "Your balance is " + balance);			
