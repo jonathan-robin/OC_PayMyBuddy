@@ -187,7 +187,7 @@ class UserServiceTest {
         when(userRepo.findByEmail(email)).thenReturn(Optional.empty());
 
         Exception exception = assertThrows(Exception.class, () -> userService.findByEmail(email));
-        assertEquals("User can't be found", exception.getMessage());
+        assertEquals("User can't be found with email: " + email, exception.getMessage());
         verify(userRepo, times(1)).findByEmail(email);
     }
 }

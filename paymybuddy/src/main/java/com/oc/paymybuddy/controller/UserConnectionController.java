@@ -28,7 +28,7 @@ public class UserConnectionController {
 	private ViewController viewController;
 	
 	@Autowired
-	private UserConnectionService userConSvc;
+	private UserConnectionService UserConSvc;
 	
 	
     public String getUser(@AuthenticationPrincipal UserDetails userDetails) {
@@ -44,13 +44,14 @@ public class UserConnectionController {
 		try {
 			userFrom = userSvc.findUser(userDetails);
 			User userTo = userSvc.findByEmail(email);
-			
-			if (userConSvc.checkIfUserConnectionTryToAddHimself(userFrom, userTo))
+			log.info("userFromId: {}", userFrom.getId());
+			log.info("userToiD: {}", userTo.getId());
+			if (UserConSvc.checkIfUserConnectionTryToAddHimself(userFrom, userTo))
 				throw new Exception("You are trying to add yourself, that's not allowed.");
-			if (userConSvc.checkIfUserConnectionIsAlreadyExisting(userFrom, userTo))
+			if (UserConSvc.checkIfUserConnectionIsAlreadyExisting(userFrom, userTo))
 				throw new Exception("User with email :" + userTo.getEmail() + " is already in your connecti ons list !");
 			
-			userConSvc.addUserConnection(userFrom, userTo);
+			UserConSvc.addUserConnection(userFrom, userTo);
 			
 			return viewController.showConnections(model, userDetails);
 			

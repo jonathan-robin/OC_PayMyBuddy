@@ -61,7 +61,7 @@ class TransactionControllerTest {
     private Model model;
     
     @Mock
-    private UserConnectionService userConnectionService;
+    private UserConnectionService UserConSvc;
 
     @InjectMocks
     private TransactionController transactionController;
