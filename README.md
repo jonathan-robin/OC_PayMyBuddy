@@ -4,8 +4,8 @@
 Application destiné à effectuer des transactions entre particuliers
 
 ## Modèle de données
-[![Aperçu de l'application]](paymybuddy/domaine.png)
-[![Aperçu de l'application]](paymybuddy/domaine2.png)
+![Aperçu de l'application](paymybuddy/domaine.png)
+![Aperçu de l'application](paymybuddy/domaine2.png)
 
 ## Entités 
 ![Aperçu de l'application](paymybuddy/Entity.png)
