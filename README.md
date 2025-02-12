@@ -4,7 +4,7 @@
 Application destiné à effectuer des transactions entre particuliers
 
 ## Modèle de données
-[![Aperçu de l'application]](https://raw.githubusercontent.com/jonathan-robin/OC_PayMyBuddy/master/domaine.png)
+[![Aperçu de l'application]](https://raw.githubusercontent.com/jonathan-robin/OC_PayMyBuddy/master/paymybuddy/domaine.png)
 [![Aperçu de l'application]](https://raw.githubusercontent.com/jonathan-robin/OC_PayMyBuddy/master/domaineé.png)
 
 ## Entités 
