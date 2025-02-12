@@ -11,7 +11,7 @@ Application destiné à effectuer des transactions entre particuliers
 ![Aperçu de l'application](./Entity.png)
 
 ## ULM
-![Aperçu de l'application](ULM.png)
+![Aperçu de l'application](paymybuddy/ULM.png)
 
 ### User
 ![Aperçu de l'application](User.png)
