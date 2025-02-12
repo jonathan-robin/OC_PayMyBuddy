@@ -44,8 +44,6 @@ public class UserConnectionController {
 		try {
 			userFrom = userSvc.findUser(userDetails);
 			User userTo = userSvc.findByEmail(email);
-			log.info("userFromId: {}", userFrom.getId());
-			log.info("userToiD: {}", userTo.getId());
 			if (UserConSvc.checkIfUserConnectionTryToAddHimself(userFrom, userTo))
 				throw new Exception("You are trying to add yourself, that's not allowed.");
 			if (UserConSvc.checkIfUserConnectionIsAlreadyExisting(userFrom, userTo))

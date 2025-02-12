@@ -3,10 +3,8 @@ package com.oc.paymybuddy.integration.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -22,7 +20,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.oc.paymybuddy.model.User;
-import com.oc.paymybuddy.model.UserConnection;
 import com.oc.paymybuddy.repository.UserRepository;
 import com.oc.paymybuddy.service.CustomUserDetailsService;
 

@@ -60,13 +60,13 @@ class ViewControllerTest {
 
     @Test
     void testHomePage() {
-        String result = viewController.homePage(model);
+        String result = viewController.homePage(model, userDetails);
         assertEquals("home", result);
     }
 
     @Test
     void testContactPage() {
-        String result = viewController.contact(model);
+        String result = viewController.contact(model, userDetails);
         assertEquals("contact", result);
     }
 

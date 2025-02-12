@@ -3,7 +3,6 @@ package com.oc.paymybuddy.integration.services;
 import java.sql.Connection;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.oc.paymybuddy.integration.config.DatabaseTestConfig;
 

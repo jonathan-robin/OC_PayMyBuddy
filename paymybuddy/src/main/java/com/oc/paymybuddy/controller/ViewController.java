@@ -27,6 +27,16 @@ public class ViewController {
 	
 	@Value("${spring.application.name}")
     String appName;
+	
+    /**
+     * Retrieves the authenticated user's details.
+     *
+     * @param userDetails the authenticated user's details
+     * @return a string containing the user's username
+     */
+    public String getUser(@AuthenticationPrincipal UserDetails userDetails) {
+        return "User Details: " + userDetails.getUsername();
+    }
 
 	@Autowired
 	private TransactionService transactionService; 
@@ -38,13 +48,13 @@ public class ViewController {
 	private UserConnectionService userConService;
 	
 	@GetMapping("/")
-    public String homePage(Model model) {
+    public String homePage(Model model, @AuthenticationPrincipal UserDetails userDetails) {
     	model.addAttribute("appName", appName);
         return "home";
     }
 
     @GetMapping("/contact") 
-    public String contact(Model model) {
+    public String contact(Model model, @AuthenticationPrincipal UserDetails userDetails) {
     	model.addAttribute("appName", appName);
         return "contact";
     }
@@ -87,19 +97,19 @@ public class ViewController {
 	 ************************************
 	 */
 	@GetMapping("/sign-in")
-    public String signIn(Model model) { 
+    public String signIn(Model model, @AuthenticationPrincipal UserDetails userDetails) { 
     	model.addAttribute("signIn", new User());
     	return "sign-in/signIn";
     }
   
     @GetMapping("/sign-in/signed")
-    public String showSignedPage() {
+    public String showSignedPage(@AuthenticationPrincipal UserDetails userDetails) {
         log.info("Call to /sign-in/signed");
         return "sign-in/signed";
     }
 	
 	@GetMapping("sign-in/signIn-error")
-	public String showSignedError() { 
+	public String showSignedError(@AuthenticationPrincipal UserDetails userDetails) { 
 		return "sign-in/signIn-error";
 	}
 	

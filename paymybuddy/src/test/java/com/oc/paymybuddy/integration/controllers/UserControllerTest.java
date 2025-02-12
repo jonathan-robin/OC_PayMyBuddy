@@ -59,7 +59,7 @@ class UserControllerTest {
 
         String result = userController.addUser(validUser, model, request, response);
 
-        assertEquals("sign-in/signed", result);
+        assertEquals("login", result);
         verify(userService).createUser(validUser);
     }
 
@@ -69,7 +69,7 @@ class UserControllerTest {
 
         String result = userController.addUser(invalidUser, model, request, response);
 
-        assertEquals("sign-in", result);
+        assertEquals("sign-in/signIn-error", result);
         verify(userService, times(0)).createUser(invalidUser);
     }
 

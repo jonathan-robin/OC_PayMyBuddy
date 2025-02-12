@@ -1,15 +1,7 @@
 package com.oc.paymybuddy.dto;
 
-import java.sql.Date;
-
 import com.oc.paymybuddy.model.User;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -7,14 +7,12 @@ import com.oc.paymybuddy.repository.UserConnectionRepository;
 import com.oc.paymybuddy.service.UserConnectionService;
 import com.oc.paymybuddy.service.UserService;
 
-import lombok.extern.slf4j.Slf4j;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,9 +20,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 
 
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-@Slf4j
 @SpringBootTest
 class UserConnectionControllerTest {
 
