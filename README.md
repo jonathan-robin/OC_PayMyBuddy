@@ -4,11 +4,11 @@
 Application destiné à effectuer des transactions entre particuliers
 
 ## Modèle de données
-![Aperçu de l'application](domaine.png)
-![Aperçu de l'application](domaine2.png)
+![Aperçu de l'application](./domaine.png)
+![Aperçu de l'application](./domaine2.png)
 
-##Entités 
-![Aperçu de l'application](Entity.png)
+## Entités 
+![Aperçu de l'application](./Entity.png)
 
 ## ULM
 ![Aperçu de l'application](ULM.png)
